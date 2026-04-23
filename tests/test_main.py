@@ -1,0 +1,15 @@
+import io
+import unittest
+from contextlib import redirect_stdout
+
+import main
+
+
+class MainTests(unittest.TestCase):
+    def test_main_prints_hello(self) -> None:
+        buffer = io.StringIO()
+
+        with redirect_stdout(buffer):
+            main.main()
+
+        self.assertEqual(buffer.getvalue().strip(), "hello")
